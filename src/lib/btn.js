@@ -16,8 +16,8 @@ const updateProps = function() {
 };
 
 const updateBtns = () => {
-    player.btn.updateProps();
-    recorder.btn.updateProps();
+    this.player.btn.updateProps();
+    this.recorder.btn.updateProps();
 };
 
 const handleClick = function() {
@@ -30,3 +30,5 @@ const handleClick = function() {
         this.stop();
     }
 };
+
+export { updateProps, updateBtns, handleClick };

@@ -1,5 +1,8 @@
-class Recorder {
-    constructor() {
+import { sequencerStatus } from './sequencer';
+import { handleClick, updateProps, updateBtns } from './btn';
+
+export default class Recorder {
+    constructor(sequencer) {
         this.on = false;
         this.btnColor = 'red';
         this.btn = document.getElementById('btnRecord');
@@ -8,6 +11,7 @@ class Recorder {
         this.btn.addEventListener('click', handleClick.bind(this));
         this.btn.updateProps = updateProps.bind(this);
         this.btnPlay = document.getElementById('btnPlay');
+        this.sequencer = sequencer;
     }
 
     start() {
@@ -30,14 +34,14 @@ class Recorder {
                 this.btnPlay.disabled = true;
                 updateBtns();
                 sequencerStatus.innerText = 'Recording...';
-                sequencer.start();
+                this.sequencer.start();
             }
         }, 1000);
     }
 
     stop() {
-        sequencer.stop();
-        if (sequencer.waitTimes.length) {
+        this.sequencer.stop();
+        if (this.sequencer.waitTimes.length) {
             this.btnPlay.disabled = false;
             sequencerStatus.innerText = 'Recorder stopped';
         }
@@ -46,4 +50,4 @@ class Recorder {
         }
         updateBtns();
     }
-}
+};

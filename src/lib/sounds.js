@@ -19,3 +19,7 @@ const createAudioElems = ( ) => {
       return sounds;
     }, {});
 };
+
+const sounds = createAudioElems();
+
+export { drumPads, sounds };

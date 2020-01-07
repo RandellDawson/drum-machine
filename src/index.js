@@ -1,3 +1,5 @@
+import './style.css';
+
 const changeBackground = (letter, type) => {
   const randomHex  = () => '#'+Math.floor(Math.random()*16777215).toString(16);
   const randomPerc = () => Math.floor(Math.random() * 70) + 40;
